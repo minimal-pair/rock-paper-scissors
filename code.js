@@ -47,16 +47,20 @@ function game() {
     for (let i = 0; i < 5; i++) {
         let playerChoice = prompt("Rock, paper, or scissors?");
         playerChoice = playerChoice.toLowerCase();
-        computerChoice = getComputerChoice();
 
-        result = playRound(choice, computerChoice);
+        let computerChoice = getComputerChoice();
+
+        result = playRound(playerChoice, computerChoice);
         switch (result) {
             case 0:
                 console.log("Tie!");
+                break;
             case 1:
-                console.log(`You win! ${capitalize(playerChoice)} beats ${computerSelection}`);
+                console.log(`You win! ${capitalize(playerChoice)} beats ${computerChoice}`);
+                break;
             case 2:
-                console.log(`You lose! ${capitalize(computerSelection)} beats ${playerSelection}`)
+                console.log(`You lose! ${capitalize(computerChoice)} beats ${playerChoice}`)
+                break;
         }
     }
 }
