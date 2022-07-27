@@ -26,24 +26,26 @@ function capitalize(str) {
 }
 
 function playRound(playerSelection, computerSelection) {    
-    //tie
+    // tie
     if (playerSelection === computerSelection) {
         return 0
-    //player wins
+    // player wins
     } else if ((playerSelection === "rock" && computerSelection === "scissors") ||
         (playerSelection === "paper" && computerSelection === "rock") ||
         (playerSelection === "scissors" && computerSelection === "paper")
     ) {
         return 1;
-    //player loses
+    // player loses
     } else {
         return 2;
     }
 }
 
 function game() {
-    let score = 0;
+    let playerScore = 0;
+    let computerScore = 0;
 
+    // play game 5 times
     for (let i = 0; i < 5; i++) {
         let playerChoice = prompt("Rock, paper, or scissors?");
         playerChoice = playerChoice.toLowerCase();
@@ -52,16 +54,30 @@ function game() {
 
         result = playRound(playerChoice, computerChoice);
         switch (result) {
-            case 0:
+            case 0: // tie
                 console.log("Tie!");
+                console.log(`Player score: ${playerScore}\nComputer score: ${computerScore}`);
                 break;
-            case 1:
+            case 1: // win
                 console.log(`You win! ${capitalize(playerChoice)} beats ${computerChoice}`);
+                playerScore += 1;
+                console.log(`Player score: ${playerScore}\nComputer score: ${computerScore}`);
                 break;
-            case 2:
+            case 2: // lose
                 console.log(`You lose! ${capitalize(computerChoice)} beats ${playerChoice}`)
+                computerScore += 1;
+                console.log(`Player score: ${playerScore}\nComputer score: ${computerScore}`);
                 break;
         }
+    }
+
+    // print final message and scores
+    if (playerScore === computerScore) {
+        console.log(`Tie :/ You both won ${playerScore}/5 games.`);
+    } else if (playerScore > computerScore) {
+        console.log(`You are the winner! You won ${playerScore}/5 games.\nThe computer won ${computerScore}/5.`);
+    } else {
+        console.log(`You are the loser! You won ${playerScore}/5 games.\nThe computer won ${computerScore}/5.`);
     }
 }
 
