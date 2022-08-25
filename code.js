@@ -42,21 +42,10 @@ function displayComputerImage(computerSelection, color) {
     computerImage.firstElementChild.style.cssText = "height: 100%; width: 100%; object-fit: cover;";
 }
 
-function capitalize(str) {
-    let firstLetter = str.slice(0, 1);
-    let restOfWord = str.slice(1);
-
-    firstLetter = firstLetter.toUpperCase();
-    restOfWord = restOfWord.toLowerCase();
-    return firstLetter + restOfWord;
-}
-
 function playRound(e) {
     const playerSelection = e.target.parentElement.id;
     const computerSelection = getComputerChoice();
 
-
-    
     // tie
     if (playerSelection === computerSelection) {
         displayPlayerImage(playerSelection, white);
