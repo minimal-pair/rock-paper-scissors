@@ -25,9 +25,10 @@ function modifyScore(textElement, modifier) {
     let text = textElement.textContent;
     let score = Number(text[text.length - 1]);
     let startText = text.slice(0, -1);
-    console.log(startText);
     score += modifier;
     textElement.textContent = startText + score;
+
+    return score;
 }
 
 function displayPlayerImage(playerSelection, color) {
@@ -57,12 +58,21 @@ function playRound(e) {
     ) {
         displayPlayerImage(playerSelection, green);
         displayComputerImage(computerSelection, red);
-        modifyScore(playerText, 1);
+        playerScore = modifyScore(playerText, 1);
+        console.log(playerScore);
+        if (playerScore == 5) {
+            alert("You win!");
+            location.reload();
+        }
     // player loses
     } else {
         displayPlayerImage(playerSelection, red);
         displayComputerImage(computerSelection, green);
-        modifyScore(computerText, 1);
+        computerScore = modifyScore(computerText, 1);
+        if (computerScore == 5) {
+            alert("You lose!");
+            location.reload();
+        }
     }
 }
 
@@ -77,4 +87,5 @@ const computerImage = document.querySelector("#comp-img");
 const playerText = document.querySelector("#you-score");
 const computerText = document.querySelector("#comp-score");
 
-
+let playerScore = 0;
+let computerScore = 0;
