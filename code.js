@@ -82,10 +82,6 @@ buttons.forEach((button) => {
     button.addEventListener("click", playRound);
 });
 
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-
 const playerImage = document.querySelector("#you-img");
 const computerImage = document.querySelector("#comp-img");
 
